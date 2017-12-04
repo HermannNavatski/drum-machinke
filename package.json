@@ -1,0 +1,19 @@
+{
+  "name": "drum-machinke",
+  "version": "1.0.0",
+  "description": "",
+  "main": "js/drum-machine.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HermannNavatski/drum-machinke.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HermannNavatski/drum-machinke/issues"
+  },
+  "homepage": "https://github.com/HermannNavatski/drum-machinke#readme"
+}
