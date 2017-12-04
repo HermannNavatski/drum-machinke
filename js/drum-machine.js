@@ -2,6 +2,7 @@
 // make sound.
 var audio = new AudioContext();
 
+
 // Create the data for the drum machine.
 var data = {
 
@@ -11,13 +12,45 @@ var data = {
   // `tracks` holds the six tracks of the drum machine.  Each track
   // has a sound and sixteen steps (or beats).
   tracks: [createTrack("gold", note(audio, 880)),
-           createTrack("gold", note(audio, 659)),
-           createTrack("gold", note(audio, 587)),
-           createTrack("gold", note(audio, 523)),
-           createTrack("gold", note(audio, 440)),
+           createTrack("purple", note(audio, 659)),
+           createTrack("black", note(audio, 587)),
+           createTrack("blue", note(audio, 523)),
+           createTrack("orange", note(audio, 440)),
+           createTrack("green", note(audio,120)),
            createTrack("dodgerblue", kick(audio))]
 };
 
+var notes = [];
+
+function ringtone(height,width){
+    this.heights = height;
+    this.width = width;
+}
+var count = 0;
+
+function recording() {
+  count = 1;
+  return count;
+}
+
+stopRecording.onclick = function stopRecording() {
+  count = 0;
+  var buf = JSON.stringify(notes);
+  alert(buf);
+  return count;
+}
+
+open.onclick = function open(){
+  for (var i = 0; i < notes.length; i++) {
+    data.tracks.forEach(function(track, row){
+      track.steps.forEach(function(on, column){
+        if( row == notes[i].width){
+          track.steps[notes[i].heights] = !on;
+        }
+      });
+    });
+  }
+}
 // Update
 // ------
 
@@ -219,7 +252,7 @@ function createTrack(color, playSound) {
   return { steps: steps, color: color, playSound: playSound };
 };
 
-var BUTTON_SIZE = 26;
+var BUTTON_SIZE = 35;
 
 // **buttonPosition()** returns the pixel coordinates of the button at
 // `column` and `row`.
